@@ -5,6 +5,14 @@ Maximum Username Lenght 16
 
 Minimum Username Lenght 4
 
+### Comming Soon
+```
+[+] - Json Method
+[+] - Threading
+[+] - Options
+  [*] - Proxys
+  ```
+
 ### Latest Release
 
 Version | Link
