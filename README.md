@@ -18,6 +18,7 @@ Minimum Username Lenght 4
 
 Version | Link
 ------------ | -------------
+1.0.2a | [More Information](https://github.com/RisingCodes/Roblox-UF/releases/tag/1.0.2a "1.0.2a")
 1.0.2 | [More Information](https://github.com/RisingCodes/Roblox-UF/releases/tag/1.0.2 "1.0.2")
 1.0.1c | [More Information](https://github.com/RisingCodes/Roblox-UF/releases/tag/1.0.1c "1.0.1c")
 1.0.1b | [More Information](https://github.com/RisingCodes/Roblox-UF/releases/tag/1.0.1b "1.0.1b")
