@@ -7,7 +7,7 @@ namespace Roblox_UF
 {
     internal static class Program
     {
-        private const string Version = "1.0.2";
+        private const string Version = "1.0.2a";
         private static readonly Random Random = new Random();
 
         private static string RandomString(int l)
@@ -16,9 +16,10 @@ namespace Roblox_UF
                 .Select(s => s[Random.Next(s.Length)]).ToArray());
         }
 
-        public static void Logo()
+        private static void Logo()
         {
-            const string logo = @"
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(@"
   _____  _     _              _____          _           
  |  __ \(_)   (_)            / ____|        | |          
  | |__) |_ ___ _ _ __   __ _| |     ___   __| | ___  ___ 
@@ -28,9 +29,14 @@ namespace Roblox_UF
                         __/ |                            
                        |___/                             
 
-";
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(logo);
+---------------------------------------------------------
+|                                                       |
+|                Made By RisingCodes Team               |
+|            Find us on V3rm, Discord, Github           |
+|                                                       |
+---------------------------------------------------------
+
+");
         }
 
         public static void Main()
@@ -43,17 +49,15 @@ namespace Roblox_UF
                 $"Good: [{long.Parse(good.ToString()):C0}] | Bad: [{long.Parse(bad.ToString()):C0}] | Version: {Version}";
             Logo();
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine("[1] - String Method\n[2] - Json Method");
+            Console.WriteLine("[1] - String Method\n[2] - Json Method\n[3] - Credits & Links");
             Console.Write("[+]> ");
 
-            var command = Console.ReadLine() ?? throw new ArgumentNullException(Console.ReadLine());
-
-            switch (command)
+            switch (Console.ReadLine() ?? throw new ArgumentNullException())
             {
                 case "1":
                 {
                     Console.Write("Username Length: ");
-                    var num = Console.ReadLine() ?? throw new ArgumentNullException(Console.ReadLine());
+                    var num = Console.ReadLine() ?? throw new ArgumentNullException();
                     Console.Clear();
 
                     while (true)
@@ -90,6 +94,25 @@ namespace Roblox_UF
                     Thread.Sleep(3000);
                     Console.Clear();
                     goto Main;
+                case "3":
+                    BackHere:
+                    Console.Clear();
+                    Console.WriteLine(
+                        "Credits [RisingCodes Team]:\n    Discord: HellFire#6953\n    V3rm: UnsourcedPyramid\n    Github: RisingCodes");
+                    Console.WriteLine(
+                        "Links:\n    V3rm: https://v3rmillion.net/member.php?action=profile&uid=1126847\n    Github: https://github.com/RisingCodes\n");
+                    Console.Write("[Type Back to go Home Page]: ");
+                    var command = Console.ReadLine() ?? throw new ArgumentNullException();
+                    if (command == "Back" || command == "back")
+                    {
+                        Console.Clear();
+                        goto Main;
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        goto BackHere;
+                    }
             }
         }
     }
