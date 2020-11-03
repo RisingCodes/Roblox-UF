@@ -7,7 +7,7 @@ namespace Roblox_UF
 {
     internal static class Program
     {
-        private const string Version = "1.0.2a";
+        private const string Version = "1.0.2b";
         private static readonly Random Random = new Random();
 
         private static string RandomString(int l)
@@ -49,13 +49,18 @@ namespace Roblox_UF
                 $"Good: [{long.Parse(good.ToString()):C0}] | Bad: [{long.Parse(bad.ToString()):C0}] | Version: {Version}";
             Logo();
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine("[1] - String Method\n[2] - Json Method\n[3] - Credits & Links");
+            Console.WriteLine("[1] - String Method\n[2] - Json Method\n[3] - Credits & Links\n[4] - Help");
             Console.Write("[+]> ");
 
+            string command;
             switch (Console.ReadLine() ?? throw new ArgumentNullException())
             {
                 case "1":
                 {
+                    Console.Clear();
+                    Logo();
+                    Console.ForegroundColor = ConsoleColor.DarkCyan;
+                    Console.WriteLine("Lenght:\n    Minimum: 4\n    Maximum: 16");
                     Console.Write("Username Length: ");
                     var num = Console.ReadLine() ?? throw new ArgumentNullException();
                     Console.Clear();
@@ -95,23 +100,42 @@ namespace Roblox_UF
                     Console.Clear();
                     goto Main;
                 case "3":
-                    BackHere:
+                    BackCredits:
                     Console.Clear();
                     Console.WriteLine(
                         "Credits [RisingCodes Team]:\n    Discord: HellFire#6953\n    V3rm: UnsourcedPyramid\n    Github: RisingCodes");
                     Console.WriteLine(
                         "Links:\n    V3rm: https://v3rmillion.net/member.php?action=profile&uid=1126847\n    Github: https://github.com/RisingCodes\n");
                     Console.Write("[Type Back to go Home Page]: ");
-                    var command = Console.ReadLine() ?? throw new ArgumentNullException();
-                    if (command == "Back" || command == "back")
+                    command = Console.ReadLine() ?? throw new ArgumentNullException();
+                    switch (command)
                     {
-                        Console.Clear();
-                        goto Main;
+                        case "Back":
+                        case "back":
+                            Console.Clear();
+                            goto Main;
+                        default:
+                            Console.Clear();
+                            goto BackCredits;
                     }
-                    else
+                case "4":
+                    BackHelp:
+                    Console.Clear();
+                    Logo();
+                    Console.ForegroundColor = ConsoleColor.DarkCyan;
+                    Console.WriteLine(
+                        "You can create a issue here: https://github.com/RisingCodes/Roblox-UF/issues\nYou can also contact me on Discord: HellFire#6953\n");
+                    Console.Write("[Type Back to go Home Page]: ");
+                    command = Console.ReadLine() ?? throw new ArgumentNullException();
+                    switch (command)
                     {
-                        Console.Clear();
-                        goto BackHere;
+                        case "Back":
+                        case "back":
+                            Console.Clear();
+                            goto Main;
+                        default:
+                            Console.Clear();
+                            goto BackHelp;
                     }
             }
         }
