@@ -6,7 +6,7 @@ namespace Roblox_UF
 {
     internal static class Program
     {
-        private const string Version = "1.0.1a";
+        private const string Version = "1.0.1b";
         private static readonly Random Random = new Random();
 
         private static string RandomString(int l) =>
@@ -18,6 +18,7 @@ namespace Roblox_UF
             var good = 0;
             var bad = 0;
 
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.Title =
                 $"Good: [{long.Parse(good.ToString()):C0}] | Bad: [{long.Parse(bad.ToString()):C0}] | Version: {Version}";
             Console.Write("Username Length: ");
