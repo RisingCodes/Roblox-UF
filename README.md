@@ -10,19 +10,24 @@ Minimum Username Lenght 4
 ```
 ### Up-Coming Stuff
 ```
-### Coming Soon
 [+] - Json Method
 [+] - Threading
 [+] - Options
     [*] - Proxys
     [*] - Time Between every checks
     [*] - Check Updayes
-    [*] - Your version
+    [*] - Your version 
     [*] - Latest Version
   ```
 
 ### Recently Added Functions
 ```
+[*] - [1.0.3]
+    [*] - Options Added
+    [*] - Check Version
+    [*] - Download New version
+    [*] - Checksum version
+
 [+] - Colors
 [+] - Help Function
 [+] - Logo
@@ -33,6 +38,7 @@ Minimum Username Lenght 4
 
 Version | Link
 ------------ | -------------
+1.0.3 | [More Information](https://github.com/RisingCodes/Roblox-UF/releases/tag/1.0.3 "1.0.3")
 1.0.2b | [More Information](https://github.com/RisingCodes/Roblox-UF/releases/tag/1.0.2b "1.0.2b")
 1.0.2a | [More Information](https://github.com/RisingCodes/Roblox-UF/releases/tag/1.0.2a "1.0.2a")
 1.0.2 | [More Information](https://github.com/RisingCodes/Roblox-UF/releases/tag/1.0.2 "1.0.2")
