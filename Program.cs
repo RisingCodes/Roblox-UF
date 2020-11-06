@@ -197,7 +197,7 @@ namespace Roblox_UF
                                         goto Main;
                                     default:
                                         Console.Clear();
-                                        goto BackHelp;
+                                        goto BackOption;
                                 }
                             }
                         case "Back":
