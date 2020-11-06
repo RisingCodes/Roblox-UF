@@ -12,7 +12,7 @@ namespace Roblox_UF
 {
     internal static class Program
     {
-        private const string Version = "1.0.2b";
+        private const string Version = "1.0.3";
         private static readonly Random Random = new Random();
 
         private static string RandomString(int l)
