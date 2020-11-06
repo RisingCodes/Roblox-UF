@@ -10,6 +10,9 @@ Minimum Username Lenght 4
 ```
 ### Up-Coming Stuff
 ```
+[+] - Cookie Generator
+[+] - Cookie Checker
+[+] - Group Checker
 [+] - Json Method
 [+] - Threading
 [+] - Options
