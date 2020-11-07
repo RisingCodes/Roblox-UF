@@ -60,18 +60,20 @@ namespace Roblox_UF
             Main:
             var good = 0;
             var bad = 0;
-
+            
             Console.Title =
                 $"Roblox UF [@RisingCodes] | Version: {Version}";
             Logo();
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine("[1] - String Method" +
-                              "\n[2] - Json Method" +
-                              "\n[3] - Credits & Links" +
-                              "\n[4] - Help " +
-                              "\n[5] - Options");
+            Console.WriteLine("[1] - String Method   |   [6] - Group Finder" +
+                              "\n[2] - Json Method     |   [7] - Cookie Checker" +
+                              "\n[3] - Credits & Links |   [8] - Cookie Generator" +
+                              "\n[4] - Help            |" +
+                              "\n[5] - Options         |");
             Console.Write("[+]> ");
 
+            GC.Collect();
+            
             string command;
             switch (Console.ReadLine() ?? throw new ArgumentNullException())
             {
@@ -99,6 +101,7 @@ namespace Roblox_UF
                                 good++;
                                 Console.ForegroundColor = ConsoleColor.Green;
                                 Console.WriteLine($"Good: {username}");
+                                GC.SuppressFinalize(webClient);
                             }
                             else
                             {
@@ -106,21 +109,25 @@ namespace Roblox_UF
                                 Console.ForegroundColor = ConsoleColor.Red;
                                 Console.WriteLine(
                                     $"Bad: {username} | ID: {JObject.Parse(webClient.DownloadString($"https://api.roblox.com/users/get-by-username?username={username}"))["Id"]}");
+                                GC.SuppressFinalize(webClient);
                             }
-
                             webClient.Dispose();
                         }
                     }
                 }
                 case "2":
+                {
                     Console.Clear();
                     Logo();
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Not Built Yet [Sleeping (3) Sec]");
                     Thread.Sleep(3000);
                     Console.Clear();
+                    GC.Collect();
                     goto Main;
+                }
                 case "3":
+                {
                     BackCredits:
                     Console.Clear();
                     Console.WriteLine(
@@ -139,7 +146,9 @@ namespace Roblox_UF
                             Console.Clear();
                             goto BackCredits;
                     }
+                }
                 case "4":
+                {
                     BackHelp:
                     Console.Clear();
                     Logo();
@@ -158,15 +167,22 @@ namespace Roblox_UF
                             Console.Clear();
                             goto BackHelp;
                     }
+                }
                 case "5":
+                {
                     BackOption:
                     Console.Clear();
                     Logo();
                     Console.ForegroundColor = ConsoleColor.DarkCyan;
                     Console.WriteLine(
-                        $"Current File Version: {Version} | Checksum: {GetMd5HashFromFile(Process.GetCurrentProcess().MainModule?.FileName)}" +
-                        $"\nLatest Version: {VersionControl.LatestVersionGithub()}");
-                    Console.Write("[To download the latest version type Download | type Back to go Home Page]: ");
+                        "Current Data:" +
+                        $"\n    Current File Version: {Version} | Checksum: {GetMd5HashFromFile(Process.GetCurrentProcess().MainModule?.FileName)}" +
+                        "\n" +
+                        "\nLatest Data:" +
+                        $"\n    Latest Version: {VersionControl.LatestVersionGithub()}" +
+                        $"\n    Latest Version Tag: {VersionControl.GetGithubReleaseTag()}" +
+                        $"\n    Published at: {VersionControl.GetGithubPublishedDate()}");
+                    Console.Write("\n[To download the latest version type Download | type Back to go Home Page]: ");
                     command = Console.ReadLine() ?? throw new ArgumentNullException();
                     switch (command)
                     {
@@ -200,6 +216,7 @@ namespace Roblox_UF
                                         goto BackOption;
                                 }
                             }
+
                         case "Back":
                         case "back":
                             Console.Clear();
@@ -208,6 +225,27 @@ namespace Roblox_UF
                             Console.Clear();
                             goto BackOption;
                     }
+                }
+                case "6":
+                {
+                    Console.Clear();
+                    Logo();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Not Built Yet [Sleeping (3) Sec]");
+                    Thread.Sleep(3000);
+                    Console.Clear();
+                    goto Main;
+                }
+                case "7":
+                {
+                    Console.Clear();
+                    Logo();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Not Built Yet [Sleeping (3) Sec]");
+                    Thread.Sleep(3000);
+                    Console.Clear();
+                    goto Main;
+                }
             }
         }
 
@@ -227,6 +265,8 @@ namespace Roblox_UF
                     new StreamReader(
                         ((HttpWebResponse) request.GetResponse()).GetResponseStream() ??
                         throw new InvalidOperationException(), Encoding.UTF8).ReadToEnd());
+                
+                GC.Collect();
                 return githubApi["tag_name"]?.ToString();
             }
 
@@ -244,7 +284,44 @@ namespace Roblox_UF
                     new StreamReader(
                         ((HttpWebResponse) request.GetResponse()).GetResponseStream() ??
                         throw new InvalidOperationException(), Encoding.UTF8).ReadToEnd());
+                GC.Collect();
                 return githubApi["assets"]?[0]?["browser_download_url"]?.ToString();
+            }
+
+            public static string GetGithubReleaseTag()
+            {
+                var request =
+                    WebRequest.CreateHttp("https://api.github.com/repos/RisingCodes/Roblox-UF/releases/latest");
+                request.UserAgent =
+                    "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36";
+                request.Method = "GET";
+                request.Accept = "application/json";
+                request.Credentials = CredentialCache.DefaultCredentials;
+
+                var githubApi = JObject.Parse(
+                    new StreamReader(
+                        ((HttpWebResponse) request.GetResponse()).GetResponseStream() ??
+                        throw new InvalidOperationException(), Encoding.UTF8).ReadToEnd());
+                GC.Collect();
+                return githubApi["html_url"]?.ToString();
+            }
+
+            public static string GetGithubPublishedDate()
+            {
+                var request =
+                    WebRequest.CreateHttp("https://api.github.com/repos/RisingCodes/Roblox-UF/releases/latest");
+                request.UserAgent =
+                    "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36";
+                request.Method = "GET";
+                request.Accept = "application/json";
+                request.Credentials = CredentialCache.DefaultCredentials;
+
+                var githubApi = JObject.Parse(
+                    new StreamReader(
+                        ((HttpWebResponse) request.GetResponse()).GetResponseStream() ??
+                        throw new InvalidOperationException(), Encoding.UTF8).ReadToEnd());
+                GC.Collect();
+                return githubApi["published_at"]?.ToString();
             }
         }
     }
