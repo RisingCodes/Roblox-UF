@@ -23,13 +23,8 @@ namespace Roblox_UF
 
         private static string GetMd5HashFromFile(string fileName)
         {
-            using (var md5 = MD5.Create())
-            {
-                using (var stream = File.OpenRead(fileName))
-                {
-                    return BitConverter.ToString(md5.ComputeHash(stream)).Replace("-", string.Empty);
-                }
-            }
+            using (var stream = File.OpenRead(fileName))
+                return BitConverter.ToString(MD5.Create().ComputeHash(stream)).Replace("-", string.Empty);
         }
 
         private static void Logo()
@@ -73,8 +68,7 @@ namespace Roblox_UF
             Console.Write("[+]> ");
 
             GC.Collect();
-            
-            string command;
+
             switch (Console.ReadLine() ?? throw new ArgumentNullException())
             {
                 case "1":
@@ -135,8 +129,7 @@ namespace Roblox_UF
                     Console.WriteLine(
                         "Links:\n    V3rm: https://v3rmillion.net/member.php?action=profile&uid=1126847\n    Github: https://github.com/RisingCodes\n");
                     Console.Write("[Type Back to go Home Page]: ");
-                    command = Console.ReadLine() ?? throw new ArgumentNullException();
-                    switch (command)
+                    switch (Console.ReadLine() ?? throw new ArgumentNullException())
                     {
                         case "Back":
                         case "back":
@@ -156,8 +149,7 @@ namespace Roblox_UF
                     Console.WriteLine(
                         "You can create a issue here: https://github.com/RisingCodes/Roblox-UF/issues\nYou can also contact me on Discord: HellFire#6953\n");
                     Console.Write("[Type Back to go Home Page]: ");
-                    command = Console.ReadLine() ?? throw new ArgumentNullException();
-                    switch (command)
+                    switch (Console.ReadLine() ?? throw new ArgumentNullException())
                     {
                         case "Back":
                         case "back":
@@ -183,8 +175,7 @@ namespace Roblox_UF
                         $"\n    Latest Version Tag: {VersionControl.GetGithubReleaseTag()}" +
                         $"\n    Published at: {VersionControl.GetGithubPublishedDate()}");
                     Console.Write("\n[To download the latest version type Download | type Back to go Home Page]: ");
-                    command = Console.ReadLine() ?? throw new ArgumentNullException();
-                    switch (command)
+                    switch (Console.ReadLine() ?? throw new ArgumentNullException())
                     {
                         case "download":
                         case "Download":
@@ -204,8 +195,7 @@ namespace Roblox_UF
                                     $"Download Finished Directory: {VersionControl.LatestVersionGithub()}\\Roblox_UF {VersionControl.LatestVersionGithub()}.exe");
                                 Console.WriteLine("The directory is at the same place as this program.");
                                 Console.Write("[Type Back to go Home Page]: ");
-                                command = Console.ReadLine() ?? throw new ArgumentNullException();
-                                switch (command)
+                                switch (Console.ReadLine() ?? throw new ArgumentNullException())
                                 {
                                     case "Back":
                                     case "back":
