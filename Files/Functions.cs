@@ -1,5 +1,5 @@
-
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -49,6 +49,7 @@ namespace Roblox_UF
 ");
         }
 
+        [SuppressMessage("ReSharper", "AssignNullToNotNullAttribute")]
         public class VersionControl
         {
             public static string LatestVersionGithub()
@@ -60,6 +61,7 @@ namespace Roblox_UF
                 request.Method = "GET";
                 request.Accept = "application/json";
                 request.Credentials = CredentialCache.DefaultCredentials;
+                request.Proxy = null;
 
                 var githubApi = JObject.Parse(
                     new StreamReader(
@@ -79,7 +81,8 @@ namespace Roblox_UF
                 request.Method = "GET";
                 request.Accept = "application/json";
                 request.Credentials = CredentialCache.DefaultCredentials;
-
+                request.Proxy = null;
+                
                 var githubApi = JObject.Parse(
                     new StreamReader(
                         ((HttpWebResponse) request.GetResponse()).GetResponseStream() ??
@@ -97,6 +100,7 @@ namespace Roblox_UF
                 request.Method = "GET";
                 request.Accept = "application/json";
                 request.Credentials = CredentialCache.DefaultCredentials;
+                request.Proxy = null;
 
                 var githubApi = JObject.Parse(
                     new StreamReader(
@@ -115,6 +119,7 @@ namespace Roblox_UF
                 request.Method = "GET";
                 request.Accept = "application/json";
                 request.Credentials = CredentialCache.DefaultCredentials;
+                request.Proxy = null;
 
                 var githubApi = JObject.Parse(
                     new StreamReader(
