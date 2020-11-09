@@ -47,6 +47,7 @@ namespace Roblox_UF
                         var username = Functions.RandomString(int.Parse(num));
                         using (var webClient = new WebClient())
                         {
+                            webClient.Proxy = null;
                             if (webClient
                                 .DownloadString($"https://api.roblox.com/users/get-by-username?username={username}")
                                 .Contains("{\"success\":false,\"errorMessage\":\"User not found\"}"))
@@ -86,7 +87,7 @@ namespace Roblox_UF
                     Console.WriteLine(
                         "Credits [RisingCodes Team]:\n    Discord: HellFire#6953\n    V3rm: UnsourcedPyramid\n    Github: RisingCodes");
                     Console.WriteLine(
-                        "Links:\n    V3rm: https://v3rmillion.net/member.php?action=profile&uid=1126847\n    Github: https://github.com/RisingCodes\n");
+                        "Links:\n    V3rm: https://v3rmillion.net/member.php?action=profile&uid=1126847\n    Github: https://github.com/RisingCodes\n    Discord: https://discord.com/users/209504735726665728\n");
                     Console.Write("[Type Back to go Home Page]: ");
                     switch (Console.ReadLine() ?? throw new ArgumentNullException())
                     {
