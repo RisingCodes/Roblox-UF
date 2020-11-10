@@ -1,6 +1,8 @@
 ## Roblox-UF - Roblox Username Finder
 ![rise](https://user-images.githubusercontent.com/70346064/97929353-93865200-1d43-11eb-8317-afd9b88cea49.png)
 
+Please read the wiki: https://github.com/RisingCodes/Roblox-UF/wiki
+
 ### Information
 
 Min/Max Username Lenght
